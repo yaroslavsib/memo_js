@@ -28,7 +28,8 @@ $(document).ready( function() {
 	images = images.concat(images); //double images
 		
 	_.each(numCards, function(i) {
-  	  cards.push(new Card(i)); // create 30 objects in 'cards' with properties img, id and class
+	  // create 30 objects in 'cards' with properties img, id and class
+  	  cards.push(new Card(i));
 	});
 		
 	_.each(_.shuffle(images), function(img, i) {
@@ -55,15 +56,18 @@ $(document).ready( function() {
 	    src: 'images/back.jpg',
 	    id: card.id
 	  }).on('click', function() {
-		    showing.push(cards[card.id]); // turn out on click and add to showing array;
+	  	    // turn out on click and add to showing array;
+		    showing.push(cards[card.id]);
 		    flipCard(this);
 	    }).appendTo("#card_container");
     });
   }
   
   function flipCard(card) {
-    $('#' + card.id).attr('src', 'images/' + cards[card.id].img); // change src of picked up image to real one
-    $(card).off('click'); // we no more need user to click on this image until the second image do not selected
+  	// change src of picked up image to real one
+    $('#' + card.id).attr('src', 'images/' + cards[card.id].img);
+    // we no more need user to click on this image until the second image do not selected
+    $(card).off('click');
 		
     if (showing.length == 2) {
 	  checkCards();
@@ -83,8 +87,8 @@ $(document).ready( function() {
 	  $('#description p').text(description[showing[0].img][1]);
 	  $('.modal').fadeIn(400);
 	  showing = [];
-			
-      if (matched.length == images.length) { // if image pair is last one - show information and when show the results block
+	  // if image pair is last one - show information and when show the results block		
+      if (matched.length == images.length) {
         $('.close').off();
         $('.close').on("click", function () {
     	  $('#description').hide();
@@ -92,7 +96,8 @@ $(document).ready( function() {
 		  });
 	  }
 	} else {
-	    setTimeout(function() { // if images are not the same - turn them and set initial onclick function
+		// if images are not the same - turn them and set initial onclick function
+	    setTimeout(function() {
 		  _.each(showing, function(card) {
 		    $('#' + card.id).on('click', function() {
 			  showing.push(cards[card.id]);
@@ -135,21 +140,3 @@ $(document).ready( function() {
   });
 	
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
