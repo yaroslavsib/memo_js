@@ -1,5 +1,5 @@
 $(function(){
-	// do not allow user to pick out text from page
+  // do not allow user to pick out text from page
   $.fn.disableSelection = function() {
     return this
               .attr('unselectable', 'on')
@@ -64,7 +64,7 @@ $(document).ready( function() {
   }
   
   function flipCard(card) {
-  	// change src of picked up image to real one
+    // change src of picked up image to real one
     $('#' + card.id).attr('src', 'images/' + cards[card.id].img);
     // we no more need user to click on this image until the second image do not selected
     $(card).off('click');
@@ -81,13 +81,13 @@ $(document).ready( function() {
 	  _.each(showing, function(card) { 
 	    matched.push(card);
 	  });
-	  // if selected images are the same, show the information about picture from the description file
+    // if selected images are the same, show the information about picture from the description file
 	  $('#wonder_photo').attr("src", 'images/' + showing[0].img);
 	  $('#description h1').text(description[showing[0].img][0]);
 	  $('#description p').text(description[showing[0].img][1]);
 	  $('.modal').fadeIn(400);
 	  showing = [];
-	  // if image pair is last one - show information and when show the results block		
+    // if image pair is last one - show information and when show the results block		
       if (matched.length == images.length) {
         $('.close').off();
         $('.close').on("click", function () {
@@ -96,7 +96,7 @@ $(document).ready( function() {
 		  });
 	  }
 	} else {
-		// if images are not the same - turn them and set initial onclick function
+        // if images are not the same - turn them and set initial onclick function
 	    setTimeout(function() {
 		  _.each(showing, function(card) {
 		    $('#' + card.id).on('click', function() {
